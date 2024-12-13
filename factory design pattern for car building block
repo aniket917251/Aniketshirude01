@@ -1,0 +1,132 @@
+import java.util.Scanner;
+
+// Abstract class defining the template method
+abstract class Car {
+    // Abstract methods to be implemented by concrete car classes
+    public abstract void assembleParts();
+    public abstract void paint();
+    public abstract void allocateAccessories();
+    public abstract void finalMakeup();
+
+    // Template method defining the order of building a car
+    public void buildCar() {
+        assembleParts();
+        paint();
+        allocateAccessories();
+        finalMakeup();
+        System.out.println("Car building process completed.\n");
+    }
+}
+
+// Concrete class for Hatchback
+class Hatchback extends Car {
+    @Override
+    public void assembleParts() {
+        System.out.println("Assembling parts for Hatchback.");
+    }
+
+    @Override
+    public void paint() {
+        System.out.println("Painting Hatchback.");
+    }
+
+    @Override
+    public void allocateAccessories() {
+        System.out.println("Allocating accessories for Hatchback.");
+    }
+
+    @Override
+    public void finalMakeup() {
+        System.out.println("Final makeup for Hatchback.");
+    }
+}
+
+// Concrete class for Sedan
+class Sedan extends Car {
+    @Override
+    public void assembleParts() {
+        System.out.println("Assembling parts for Sedan.");
+    }
+
+    @Override
+    public void paint() {
+        System.out.println("Painting Sedan.");
+    }
+
+    @Override
+    public void allocateAccessories() {
+        System.out.println("Allocating accessories for Sedan.");
+    }
+
+    @Override
+    public void finalMakeup() {
+        System.out.println("Final makeup for Sedan.");
+    }
+}
+
+// Concrete class for SUV
+class SUV extends Car {
+    @Override
+    public void assembleParts() {
+        System.out.println("Assembling parts for SUV.");
+    }
+
+    @Override
+    public void paint() {
+        System.out.println("Painting SUV.");
+    }
+
+    @Override
+    public void allocateAccessories() {
+        System.out.println("Allocating accessories for SUV.");
+    }
+
+    @Override
+    public void finalMakeup() {
+        System.out.println("Final makeup for SUV.");
+    }
+}
+
+// Factory class to create different types of cars
+class CarFactory {
+    // Factory method to create cars based on the type
+    public static Car createCar(String carType) {
+        if (carType == null || carType.isEmpty()) {
+            throw new IllegalArgumentException("Car type cannot be null or empty");
+        }
+        switch (carType.toLowerCase()) {
+            case "hatchback":
+                return new Hatchback();
+            case "sedan":
+                return new Sedan();
+            case "suv":
+                return new SUV();
+            default:
+                throw new IllegalArgumentException("Unknown car type: " + carType);
+        }
+    }
+}
+
+// Main class to test the Factory and Template Method pattern
+public class Main {
+    public static void main(String[] args) {
+        // Create a Scanner object to take input from the user
+        Scanner scanner = new Scanner(System.in);
+        
+        // Ask the user to input the car type
+        System.out.println("Enter the type of car you want to build (Hatchback, Sedan, SUV): ");
+        String carType = scanner.nextLine().trim();  // Read user input and trim any extra spaces
+        
+        // Create a car using the factory and build it
+        try {
+            Car car = CarFactory.createCar(carType);
+            System.out.println("Building a " + carType + ":");
+            car.buildCar();
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+        
+        // Close the scanner to avoid resource leak
+        scanner.close();
+    }
+}
