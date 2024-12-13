@@ -1,0 +1,47 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);  // Scanner object for user input
+
+        try {
+            // User input for two numbers
+            System.out.print("Enter the first number (Num1): ");
+            String input1 = sc.nextLine();
+
+            System.out.print("Enter the second number (Num2): ");
+            String input2 = sc.nextLine();
+
+            // Convert input strings to integers
+            int num1 = Integer.parseInt(input1);
+            int num2 = Integer.parseInt(input2);
+
+            // Array for testing ArrayIndexOutOfBoundsException
+            int[] array = {10, 20, 30, 40, 50};
+
+            // Perform division
+            int result = num1 / num2;  // This may throw ArithmeticException
+            System.out.println("Result of division: " + result);
+
+            // Access array elements at indices num1 and num2
+            System.out.println("Value at index " + num1 + ": " + array[num1]);
+            System.out.println("Value at index " + num2 + ": " + array[num2]);
+
+        } catch (ArrayIndexOutOfBoundsException e) {
+            // Handle invalid array index access
+            System.out.println("ArrayIndexOutOfBoundsException: Index out of bounds. " +
+                    "Valid indices are between 0 and 4.");
+        } catch (NumberFormatException e) {
+            // Handle invalid number format (non-integer inputs)
+            System.out.println("NumberFormatException: Invalid number format. Please enter valid integers.");
+        } catch (ArithmeticException e) {
+            // Handle division by zero
+            System.out.println("ArithmeticException: Cannot divide by zero.");
+        } finally {
+            // This block will always execute
+            System.out.println("Program execution completed………..");
+        }
+
+        sc.close();  // Close the scanner object to prevent resource leak
+    }
+}
