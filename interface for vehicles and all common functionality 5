@@ -1,0 +1,150 @@
+import java.util.Scanner;
+
+interface Vehicle {
+    void changeGear(int newGear);
+    void speedUp(int increment);
+    void applyBrakes(int decrement);
+}
+
+class Bicycle implements Vehicle {
+    private int speed;
+    private int gear;
+
+    public Bicycle() {
+        this.speed = 0;
+        this.gear = 1;
+    }
+
+    public void changeGear(int newGear) {
+        if (newGear > 0 && newGear <= 6) {
+            this.gear = newGear;
+            System.out.println("Bicycle gear changed to: " + gear);
+        } else {
+            System.out.println("Invalid gear");
+        }
+    }
+
+    public void speedUp(int increment) {
+        speed = speed + increment;
+        System.out.println("Bicycle speed increased to: " + speed + " km/h");
+    }
+
+    public void applyBrakes(int decrement) {
+        if (speed > 0) {
+            speed = speed - decrement;
+            System.out.println("Bicycle speed after applying brakes decreased to: " + speed + " km/h");
+        }
+    }
+}
+
+class Bike implements Vehicle {
+    private int speed;
+    private int gear;
+
+    public Bike() {
+        this.speed = 0;
+        this.gear = 1;
+    }
+
+    public void changeGear(int newGear) {
+        if (newGear > 0 && newGear <= 6) {
+            this.gear = newGear;
+            System.out.println("Bike gear changed to: " + gear);
+        } else {
+            System.out.println("Invalid gear");
+        }
+    }
+
+    public void speedUp(int increment) {
+        speed = speed + increment;
+        System.out.println("Bike speed increased to: " + speed + " km/h");
+    }
+
+    public void applyBrakes(int decrement) {
+        if (speed > 0) {
+            speed = speed - decrement;
+            System.out.println("Bike speed after applying brakes decreased to: " + speed + " km/h");
+        }
+    }
+}
+
+class Car implements Vehicle {
+    private int speed;
+    private int gear;
+
+    public Car() {
+        this.speed = 0;
+        this.gear = 1;
+    }
+
+    public void changeGear(int newGear) {
+        if (newGear > 0 && newGear <= 6) {
+            this.gear = newGear;
+            System.out.println("Car gear changed to: " + gear);
+        } else {
+            System.out.println("Invalid gear");
+        }
+    }
+
+    public void speedUp(int increment) {
+        speed = speed + increment;
+        System.out.println("Car speed increased to: " + speed + " km/h");
+    }
+
+    public void applyBrakes(int decrement) {
+        if (speed > 0) {
+            speed = speed - decrement;
+            System.out.println("Car speed after applying brakes decreased to: " + speed + " km/h");
+        }
+    }
+}
+
+public class VehicleTest {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        Vehicle bicycle = new Bicycle();
+        System.out.println("*********Bicycle Information*********");
+        System.out.print("Enter gear to change: ");
+        int gearBicycle = sc.nextInt();
+        bicycle.changeGear(gearBicycle);
+        
+        System.out.print("Enter speed to increase: ");
+        int speedBicycle = sc.nextInt();
+        bicycle.speedUp(speedBicycle);
+        
+        System.out.print("Enter speed to decrease by applying brakes: ");
+        int brakeBicycle = sc.nextInt();
+        bicycle.applyBrakes(brakeBicycle);
+
+        System.out.println("\n*********Bike Information*********");
+        Vehicle bike = new Bike();
+        System.out.print("Enter gear to change: ");
+        int gearBike = sc.nextInt();
+        bike.changeGear(gearBike);
+        
+        System.out.print("Enter speed to increase: ");
+        int speedBike = sc.nextInt();
+        bike.speedUp(speedBike);
+        
+        System.out.print("Enter speed to decrease by applying brakes: ");
+        int brakeBike = sc.nextInt();
+        bike.applyBrakes(brakeBike);
+
+        System.out.println("\n*********Car Information*********");
+        Vehicle car = new Car();
+        System.out.print("Enter gear to change: ");
+        int gearCar = sc.nextInt();
+        car.changeGear(gearCar);
+        
+        System.out.print("Enter speed to increase: ");
+        int speedCar = sc.nextInt();
+        car.speedUp(speedCar);
+        
+        System.out.print("Enter speed to decrease by applying brakes: ");
+        int brakeCar = sc.nextInt();
+        car.applyBrakes(brakeCar);
+        
+        sc.close();
+    }
+}
