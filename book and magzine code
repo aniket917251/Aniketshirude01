@@ -2,14 +2,14 @@ import java.util.Scanner;
 class Publication {
     String title;
     double price;
-    protected int copies;  // Making it protected so it can be accessed by subclasses
-    // Constructor to initialize publication details
+    protected int copies;  
+    
     public Publication(String title, double price, int copies) {
         this.title = title;
         this.price = price;
         this.copies = copies;
     }
-    // Method to simulate selling copies of the publication
+    
     public void sellCopies(int numberOfCopies) {
         if (numberOfCopies <= copies) {
             this.copies = this.copies - numberOfCopies;  // Decrease copies based on the sale
@@ -27,13 +27,13 @@ class Publication {
 class Book extends Publication {
     String author;
 
-    // Constructor to initialize book details including the author
+  
     public Book(String title, double price, int copies, String author) {
         super(title, price, copies);
         this.author = author;
     }
 
-    // Method to simulate ordering more copies of the book
+    
     public void orderMoreCopies(int numberOfCopies) {
         this.copies = this.copies + numberOfCopies;
     }
@@ -48,11 +48,11 @@ class Magazine extends Publication {
         this.currentIssue = currentIssue;
     }
 
-    // Method to order more magazines
+    
     public void orderMoreCopies(int quantity) {
         this.copies += quantity;
     }
-    // Method to update the magazine current issue
+    
     public void receiveNewIssue(int newIssue) {
         this.currentIssue = newIssue;
     }
@@ -71,10 +71,10 @@ public class Main {
         System.out.print("Author: ");
         String bookAuthor = sc.nextLine();
 
-        // Creating a Book object using user input
+        
         Book book = new Book(bookTitle, bookPrice, bookCopies, bookAuthor);
 
-        // Input for Magazine details
+        
         System.out.println("\nEnter details for the Magazine:");
         System.out.print("Title: ");
         String magazineTitle = sc.nextLine();
@@ -85,10 +85,9 @@ public class Main {
         System.out.print("Current Issue: ");
         int magazineIssue = sc.nextInt();
 
-        // Creating a Magazine object using user input
+        
         Magazine magazine = new Magazine(magazineTitle, magazinePrice, magazineCopies, magazineIssue);
 
-        // Perform some operations on Book and Magazine (ordering, selling)
         System.out.print("\nEnter number of copies to order for the Book: ");
         int bookOrder = sc.nextInt();
         book.orderMoreCopies(bookOrder);
@@ -107,14 +106,14 @@ public class Main {
         System.out.print("Enter the new issue number for the Magazine: ");
         int newIssue = sc.nextInt();
         magazine.receiveNewIssue(newIssue);
-        // Printing Book details
+        
         System.out.println("\nBook Details:");
         System.out.println("Title: " + book.title);
         System.out.println("Author: " + book.author);
         System.out.println("Price: $" + book.price);
         System.out.println("Remaining copies: " + book.copies);
         System.out.println("Total remaining value of Book stock: $" + book.remainingStockValue());
-        // Printing Magazine details
+        
         System.out.println("\nMagazine Details:");
         System.out.println("Title: " + magazine.title);
         System.out.println("Current Issue: " + magazine.currentIssue);
