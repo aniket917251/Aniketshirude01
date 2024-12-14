@@ -1,0 +1,99 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String args[]) {
+        int num1, num2, ch;
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.print("Enter first Number (real and imaginary parts):\n");
+        num1 = sc.nextInt();
+        num2 = sc.nextInt();
+        Complex_Op Object1 = new Complex_Op(num1, num2);
+        
+        System.out.print("Enter Second Number (real and imaginary parts):\n");
+        num1 = sc.nextInt();
+        num2 = sc.nextInt();
+        Complex_Op Object2 = new Complex_Op(num1, num2);
+        
+        System.out.println("****** Following Arithmetic Operations are performed on Complex Numbers *****");
+        System.out.println("1. Addition");
+        System.out.println("2. Subtraction");
+        System.out.println("3. Multiplication");
+        System.out.println("4. Division");
+        
+        System.out.print("Enter Your Choice: ");
+        ch = sc.nextInt();
+        
+        switch (ch) {
+            case 1: 
+                Object1.Addition(Object2);
+                break;
+            case 2: 
+                Object1.Subtraction(Object2);
+                break;
+            case 3: 
+                Object1.Multiplication(Object2);
+                break;
+            case 4: 
+                Object1.Division(Object2);
+                break;
+            default:
+                System.out.println("Invalid choice");
+        }
+    }
+}
+
+class Complex_Op {
+    float real, imag;
+    
+    Complex_Op() {  
+        real = 0;
+        imag = 0;
+    }
+
+    Complex_Op(float real, float imag) {  
+        this.real = real;
+        this.imag = imag;
+    }
+
+    void Addition(Complex_Op C2) {
+        float realPart = this.real + C2.real;
+        float imagPart = this.imag + C2.imag;
+        System.out.println("Addition: " + realPart + " + " + imagPart + "i");
+    }
+
+    void Subtraction(Complex_Op C2) {
+        float realPart = this.real - C2.real;
+        float imagPart = this.imag - C2.imag;
+        System.out.println("Subtraction: " + realPart + " + " + imagPart + "i");
+    }
+
+    void Multiplication(Complex_Op C2) {
+        float realPart = this.real * C2.real - this.imag * C2.imag;
+        float imagPart = this.real * C2.imag + this.imag * C2.real;
+        System.out.println("Multiplication: " + realPart + " + " + imagPart + "i");
+    }
+
+    void Division(Complex_Op C2) {
+        float a = this.real;
+        float b = this.imag;
+        float c = C2.real;
+        float d = C2.imag;
+
+        float denominator = c * c + d * d;
+
+        if (denominator == 0) {
+            System.out.println("Error: Division by zero (denominator is zero).");
+            return;
+        }
+
+        float realPart = (a * c + b * d) / denominator;
+        float imagPart = (b * c - a * d) / denominator;
+
+        if (imagPart < 0) {
+            System.out.println("Division: " + realPart + " - " + Math.abs(imagPart) + "i");
+        } else {
+            System.out.println("Division: " + realPart + " + " + imagPart + "i");
+        }
+    }
+}
