@@ -13,7 +13,7 @@ class Employee {
         this.Mail_id = Mail_id;
         this.Mobile_no = Mobile_no;
     }
-    // Display Employee details
+    
     public void displayEmployeeDetails() {
         System.out.println("Employee ID: " + Emp_id);
         System.out.println("Name: " + Emp_name);
@@ -21,7 +21,7 @@ class Employee {
         System.out.println("Email: " + Mail_id);
         System.out.println("Mobile: " + Mobile_no);
     }
-    // Common pay slip logic
+
     public void generatePaySlip(double basicPay) {
         System.out.println("Basic Pay: " + basicPay);
         double da = 0.97 * basicPay;
@@ -70,7 +70,7 @@ class ProjectManager extends Employee {
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        // Taking input for Programmer
+        
         System.out.println("Enter details for Programmer:");
         System.out.print("Employee Name: ");
         String name = scanner.nextLine();
@@ -84,9 +84,9 @@ public class Main {
         String mobile = scanner.nextLine();
         System.out.print("Basic Pay: ");
         double basicPayProgrammer = scanner.nextDouble();
-        scanner.nextLine();  // Consume the newline
+        scanner.nextLine();  
         Programmer programmer = new Programmer(name, empId, address, email, mobile, basicPayProgrammer);
-        // Taking input for Team Lead
+       
         System.out.println("Enter details for Team Lead:");
         System.out.print("Employee Name: ");
         name = scanner.nextLine();
@@ -100,9 +100,9 @@ public class Main {
         mobile = scanner.nextLine();
         System.out.print("Basic Pay: ");
         double basicPayTeamLead = scanner.nextDouble();
-        scanner.nextLine();  // Consume the newline
+        scanner.nextLine();  
         TeamLead teamLead = new TeamLead(name, empId, address, email, mobile, basicPayTeamLead);
-        // Taking input for Assistant Project Manager
+        
         System.out.println("Enter details for Assistant Project Manager:");
         System.out.print("Employee Name: ");
         name = scanner.nextLine();
@@ -116,9 +116,9 @@ public class Main {
         mobile = scanner.nextLine();
         System.out.print("Basic Pay: ");
         double basicPayAPM = scanner.nextDouble();
-        scanner.nextLine();  // Consume the newline
+        scanner.nextLine(); 
         AssistantProjectManager apm = new AssistantProjectManager(name, empId, address, email, mobile, basicPayAPM);
-        // Taking input for Project Manager
+        
         System.out.println("Enter details for Project Manager:");
         System.out.print("Employee Name: ");
         name = scanner.nextLine();
@@ -133,7 +133,7 @@ public class Main {
         System.out.print("Basic Pay: ");
         double basicPayPM = scanner.nextDouble();
         ProjectManager pm = new ProjectManager(name, empId, address, email, mobile, basicPayPM);
-        scanner.close();  // Close the scanner
+        scanner.close();  
     }
 }
 
