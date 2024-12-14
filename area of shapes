@@ -1,28 +1,25 @@
 import java.util.Scanner;
-
-// Base class
 abstract class Shape {
     double dimension1;
     double dimension2;
 
-    // Method to input data
     public void inputData(double d1, double d2) {
         this.dimension1 = d1;
         this.dimension2 = d2;
     }
 
-    // Abstract method to compute area
+ 
     public abstract double compute_area();
 }
 
-// Derived class for Triangle
+
 class Triangle extends Shape {
     public double compute_area() {
         return 0.5 * dimension1 * dimension2; // Area = 0.5 * base * height
     }
 }
 
-// Derived class for Rectangle
+
 class Rectangle extends Shape {
     public double compute_area() {
         return dimension1 * dimension2; // Area = length * width
@@ -51,7 +48,7 @@ public class Main {
             System.out.println("Calculated area of Triangle is: " + area);
         } 
         else if (ch == 2) {
-            // Input for Rectangle
+          
             System.out.println("Enter length and width of the rectangle:");
             double d1 = sc.nextDouble();
             double d2 = sc.nextDouble();
