@@ -7,7 +7,6 @@ class BankAccount {
     private double dailyWithdrawalLimit;
     private double amountWithdrawnToday;
 
-    // Constructor to initialize the bank account
     public BankAccount(String accountNumber, String accountHolder, double initialBalance, double dailyWithdrawalLimit) {
         this.accountNumber = accountNumber;
         this.accountHolder = accountHolder;
@@ -16,7 +15,6 @@ class BankAccount {
         this.amountWithdrawnToday = 0;
     }
 
-    // Method to deposit money
     public void deposit(double amount) {
         if (amount > 0) {
             balance += amount;
@@ -41,12 +39,11 @@ class BankAccount {
         }
     }
 
-    // Method to check balance
+   
     public void checkBalance() {
         System.out.println("Current balance: $" + balance);
     }
 
-    // Method to display account information
     public void displayAccountInfo() {
         System.out.println("Account Holder: " + accountHolder);
         System.out.println("Account Number: " + accountNumber);
@@ -55,16 +52,15 @@ class BankAccount {
     }
 }
 
-public class BankingSystem {
+public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // Create an account with some initial values
         BankAccount account = new BankAccount("12345678", "John Doe", 5000, 1000);
 
         int choice;
         do {
-            // Displaying menu options
+            
             System.out.println("\n**** We have the following Operations on the Banking System ****");
             System.out.println("1. Deposit Money");
             System.out.println("2. Withdraw Money");
